@@ -89,6 +89,19 @@ function drinksInDay (drinkingDay) {
     return drinkCount;
 }
 
+function sendToServer(report) {
+    var request = $.ajax({
+      url: "/dailyDrinkReport",
+      type: "POST",
+      data: {
+            report_json: JSON.stringify(report['report']),
+            email: report['profile']['email']
+      },
+      dataType: "html"
+    });
+
+}
+
 function sendDailyReport (drinkingDay) {
     var report = dailyReport(drinkingDay);
     //drinkReport must contain email address
