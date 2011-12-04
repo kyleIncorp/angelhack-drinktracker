@@ -1,1 +1,12 @@
-//Javascript node.js server
+console.log("Hello, we're using "+process.version);
+if( ! process.version=="v0.6.4")
+	require.paths.unshift(__dirname+"/node_modules");
+
+
+var app = require('express').createServer();
+
+app.get('/', function(req, res){
+	res.send("Hello World");	
+});
+
+app.listen(5000);
