@@ -11,7 +11,15 @@
         <script type="text/javascript">
 
             $('#home_page').live('pageinit',function(event){
-                    alert('page loaded');
+                    //set drink counter to reflect current drinking day
+                    var drinkArray = getLSDrinkArray('Dec 3');
+                    $('#drink_count').text(drinkArray.length);
+                    
+                    var LSEmail = returnEmail();
+
+                    if (LSEmail=='none') {
+                        $.mobile.changePage("settings.html");
+                    }
             });
         
         </script>
