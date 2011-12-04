@@ -6,21 +6,23 @@
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+        <script src="js/script.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
         <div data-role="page"> 
-            <div data-role="header">
+            <div class="top_bar" data-role="header">
                 <h1>Drink Tracker</h1>
+                <a href="#" class="right-settings" data-role="button" data-icon="gear"></a>
             </div> 
             <div data-role="content" data-theme="a">
                 <div data-role="controlgroup" data-type="horizontal">
-                    <a href="index.html" data-role="button" data-theme="e">Beer</a>
-                    <a href="index.html" data-role="button" data-theme="e">Wine</a>
+                    <a href="#" data-role="button" data-theme="e" onClick="writeLocalStorage">Beer</a>
+                    <a href="#" data-role="button" data-theme="e">Wine</a>
                 </div>
                  <div data-role="controlgroup" data-type="horizontal">
-                    <a href="index.html" data-role="button" data-theme="e">Cocktail</a>
-                    <a href="index.html" data-role="button" data-theme="e">Shots!</a>
+                    <a href="#" data-role="button" data-theme="e">Cocktail</a>
+                    <a href="#" data-role="button" data-theme="e">Shots!</a>
                 </div> 
             </div> 
             <div data-role="footer">
