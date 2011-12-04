@@ -6,7 +6,7 @@ if( ! process.version=="v0.6.4")
 var app = require('express').createServer();
 
 app.get('/', function(req, res){
-	res.send("Hello World");	
+	res.send("GoonBuggy: What what in y`r cup?");	
 });
 
 
