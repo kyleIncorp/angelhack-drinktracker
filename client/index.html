@@ -8,11 +8,17 @@
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
         <script src="js/script.js"></script>
+        <script type="text/javascript">
 
+            $('#home_page').live('pageinit',function(event){
+                    alert('page loaded');
+            });
+        
+        </script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <div data-role="page"> 
+        <div data-role="page" id="home_page"> 
             <div class="top_bar" data-role="header">
                 <h1>Goon Buggy</h1>
                 <a href="settings.html" class="right-settings" data-role="button" data-icon="gear" data-transition="flip">Settings</a>
@@ -35,6 +41,15 @@
             <div data-role="footer">
                 <h6>Built at AngelHack</h6>
             </div> 
+        </div>
+
+        <div data-role="page" id="drink_dialog">
+            <div class="top_bar" data-role="header">
+                <h2>Drink Logged</h2>
+            </div>
+            <div data-role="content" data-theme="e">
+                <p id="drink_message" style="text-align:center;"></p>
+            </div>
         </div>
     </body>
 </html>
