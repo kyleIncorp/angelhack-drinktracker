@@ -10,8 +10,6 @@ function getTime() {
 function returnGeoCoords(pos) {
     var geo;
 
-    alert(pos.coords.latitude);
-
     geo = {'lat': pos.coords.latitude, 'long': pos.coords.longitude};
 
     return geo;
@@ -19,8 +17,6 @@ function returnGeoCoords(pos) {
 
 function getGeoCoords(){
     var geo = navigator.geolocation.getCurrentPosition(returnGeoCoords);
-
-    alert(geo);
 
     return geo;
 }
@@ -32,10 +28,12 @@ function addDrink (description) {
     var drinkDict =
         {
             'time': time,
-    //        'geo': {'lat': geo.lat, 'long': geo.long},
+    //        'geo': {'lat': geo['lat'], 'long': geo['long']},
             'desc': description,
         };
 
+
+    console.log(drinkDict);
 }
 
 function dailyReport () {
