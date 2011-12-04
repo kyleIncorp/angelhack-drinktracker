@@ -38,8 +38,40 @@ function getTime() {
 }
 
 function getDrinkingDay(){
-    
-    return "Dec 3";
+    var month=new Array(12);
+    month[0]="January";
+    month[1]="February";
+    month[2]="March";
+    month[3]="April";
+    month[4]="May";
+    month[5]="June";
+    month[6]="July";
+    month[7]="August";
+    month[8]="September";
+    month[9]="October";
+    month[10]="November";
+    month[11]="December";
+
+    var drinkDay;
+
+    var day = new Date();
+    var m = day.getMonth();
+    var d = day.getDate();
+    var h = day.getHours();
+
+    if (h>=12) {
+        drinkDay = month[m] + d
+    }
+    else {
+        if (d!=1) {
+            drinkDay = month[m] + (d-1)
+        }
+        else {
+            drinkDay = month[m-1] + d
+        }
+    }
+
+    return drinkDay;
 }
 
 function returnGeoCoords(pos) {
