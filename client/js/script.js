@@ -26,6 +26,10 @@ function getLSDrinkArray(drinkingDay) {
     var arrayString = localStorage.getItem(drinkingDay);
 
     drinkArray = JSON.parse(arrayString);
+    
+    if (!drinkArray) {
+        drinkArray = new Array();
+    }
 
     return drinkArray;
 }
@@ -56,15 +60,37 @@ function addDrink(description) {
     var drinkArrayString = JSON.stringify(drinkArray);
 
     localStorage.setItem(drinkingDay, drinkArrayString);
+    console.log("Successful drink:"+ description +" addition");
 }
 
 
-function dailyReport () {
+function dailyReport (drinkingDay) {
+    var localStorageReport = JSON.parse(localStorage.getItem(drinkingDay));
+    var report;
 
+    if (!localStorageReport) {
+        report = "No drinks were recorded on day: " + drinkingDay;
+    }
+    else {
+        var reportDict = new Array();
+        reportDict['profile'] = {'email': localStorage.getItem('email')};
+        reportDict['report'] = localStorageReport;
+        
+        report = reportDict;
+    }
+
+    return report;
 }
 
-function sendDailyReport () {
-    var report = dailyReport(day);
+function drinksInDay (drinkingDay) {
+    var report = dailyReport(drinkingDay);
+    var drinkCount = report.length;
+
+    return drinkCount;
+}
+
+function sendDailyReport (drinkingDay) {
+    var report = dailyReport(drinkingDay);
     //drinkReport must contain email address
     //sendToServer(report);
 }
@@ -73,6 +99,12 @@ function setEmail(email){
     localStorage.setItem('email', email);
 }
 
-function test() {
-    alert("yup");
+function returnEmail() {
+    var email = localStorage.getItem('email');
+
+    if (!email) {
+        email = 'No email stored';
+    }
+
+    return email;
 }
