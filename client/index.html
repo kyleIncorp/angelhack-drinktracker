@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Drink Tracker v1</title>
+        <title>GoonBuggy v1</title>
         <link rel="stylesheet" href="css/mobile.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+        
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
         <script src="js/script.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
         <div data-role="page"> 
             <div class="top_bar" data-role="header">
-                <h1>Drink Tracker</h1>
-                <a href="#" class="right-settings" data-role="button" data-icon="gear"></a>
+                <h1>Goon Buggy</h1>
+                <a href="settings.html" class="right-settings" data-role="button" data-icon="gear" data-transition="flip">Settings</a>
             </div> 
-            <div data-role="content" data-theme="a">
+            <div data-role="content" data-theme="e">
                 <div data-role="controlgroup" data-type="horizontal">
                     <a href="#" data-role="button" data-theme="e" onClick="addDrink('beer');">Beer</a>
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('wine');">Wine</a>
+                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('shots');">Shots</a>
                 </div>
                  <div data-role="controlgroup" data-type="horizontal">
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('cocktail');">Cocktail</a>
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('shots');">Shots!</a>
+                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('spirits');">Spirit</a>
+                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('wine');">Wine</a>
                 </div> 
             </div> 
             <div data-role="footer">
-                <h6>Built at AngelHack after a night of too much (yet unknown) consumption</h6>
+                <h6>Built at AngelHack</h6>
             </div> 
         </div>
     </body>
