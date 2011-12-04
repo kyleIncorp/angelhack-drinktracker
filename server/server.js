@@ -6,6 +6,12 @@ var express = require('express'),
     app = express.createServer();
     path = require('path');
     jade = require('jade');
+    OAuth = require('oauth').OAuth;
+
+var factualKey = "Jrc8vygPg8kBgAaAjIcnAopBVuTWaPRlImiu8iI4";
+var factualSecret = "6EP11yubg2OzX0lMEvOQC0pnN18qraC28bDpqZpz";
+var securer = new OAuth(null, null, factualKey, factualSecret,'1.0', null,'HMAC-SHA1');
+
 
 //Static HTML files
 app.configure(function(){
@@ -17,13 +23,20 @@ app.configure(function(){
 
 //Otherwise...
 app.post('/dailyDrinkReport', function(req, res){
+	report = JSON.parse(req.body);
 	console.log(req.body);
-	//Neat! req.body.* contains everything we need
-	//jade template and sendgrid
-	email = jade.renderFile('views/email.jade', {}, function(err, html){
+	console.log(report);
+	email = jade.renderFile('views/email.jade', req.body, function(err, html){
 		console.log(html);
 	});
 });
 
 var port = process.env.PORT || 5000;
 app.listen(port);
+
+//securer.get("http://api.v3.factual.com/t/places",
+//	    null,
+//	    null,
+//	    function (err, data, result) {
+//		console.log(data);
+//	    });
