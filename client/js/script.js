@@ -1,5 +1,34 @@
 var description;
 
+var drinkMessages = new Array();
+drinkMessages = ['Just getting started',
+                'Tonight\'s going to be a good night',
+                'Here we go!',
+                'Boozing and cruising!',
+                'Getting loose!',
+                'Losing it!',
+                'Pants off, dance off',
+                'Prost',
+                'Cheers',
+                'Salu',
+                '10 drinks down, whip out that phone and make mistakes',
+                'Drink, Drank, Drunk!',
+                'Drinking solves world sobriety!',
+                'Bottoms up!',
+                'Oh that shit cray!',
+                'Taxi!',
+                'Drink like your mama told ya!',
+                'Don\'t break the seal.',
+                'Raise your glasses',
+                'Beer goggles'];
+
+function displayDrinkMessage(drinkMessages) {
+    var rando = Math.floor(Math.random()*(drinkMessages.length-1));
+    var message = drinkMessages[rando];
+
+    alert(message);
+}
+
 function getTime() {
     var time;
     time = new Date().getTime();
@@ -61,6 +90,7 @@ function addDrink(description) {
 
     localStorage.setItem(drinkingDay, drinkArrayString);
     console.log("Successful drink:"+ description +" addition");
+    displayDrinkMessage(drinkMessages);
 }
 
 
