@@ -91,6 +91,8 @@ function addDrink(description) {
     localStorage.setItem(drinkingDay, drinkArrayString);
     console.log("Successful drink:"+ description +" addition");
     displayDrinkMessage(drinkMessages);
+
+    $('#drink_count').val(drinkArray.length);
 }
 
 
