@@ -14,18 +14,14 @@
     <body>
         <div data-role="page"> 
             <div class="top_bar" data-role="header">
-                <h1>Drink Tracker</h1>
-                <a href="settings.html" class="right-settings" data-role="button" data-icon="gear">Settings</a>
+                <h1>Settings</h1>
+                <a href="index.html" class="right-settings" data-role="button" data-icon="home">Home</a>
             </div> 
             <div data-role="content" data-theme="a">
-                <div data-role="controlgroup" data-type="horizontal">
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('beer');">Beer</a>
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('wine');">Wine</a>
+                <div data-role="fieldcontain">
+                    <label for="Email">Email:</label>
+                    <input type="email" name="email" id="email" value=""  />
                 </div>
-                 <div data-role="controlgroup" data-type="horizontal">
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('cocktail');">Cocktail</a>
-                    <a href="#" data-role="button" data-theme="e" onClick="addDrink('shots');">Shots!</a>
-                </div> 
             </div> 
             <div data-role="footer">
                 <h6>Built at AngelHack after a night of too much (yet unknown) consumption</h6>
