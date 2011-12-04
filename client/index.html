@@ -12,7 +12,7 @@
 
             $('#home_page').live('pageinit',function(event){
                     //set drink counter to reflect current drinking day
-                    var drinkArray = getLSDrinkArray('Dec 3');
+                    var drinkArray = getLSDrinkArray(getDrinkingDay());
                     $('#drink_count').text(drinkArray.length);
                     
                     var LSEmail = returnEmail();
