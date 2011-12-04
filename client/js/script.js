@@ -7,34 +7,38 @@ function getTime() {
     return time;
 }
 
+function getDrinkingDay(){
+    
+    return "Dec 3";
+}
+
 function returnGeoCoords(pos) {
     var geo;
 
     geo = {'lat': pos.coords.latitude, 'long': pos.coords.longitude};
 
-    return geo;
+    localStorage.setItem('temp_geo', JSON.stringify(geo));
 }
 
-function getGeoCoords(){
-    var geo = navigator.geolocation.getCurrentPosition(returnGeoCoords);
-
-    return geo;
-}
-
-function addDrink (description) {
+function addDrink(description) {
+    
     var time = getTime();
-    var geo = getGeoCoords();
+    var drinkingDay = getDrinkingDay();
 
-    var drinkDict =
+    navigator.geolocation.getCurrentPosition(returnGeoCoords);
+    var geo = JSON.parse(localStorage.getItem('temp_geo'));
+
+    var drinkDict = new Array();
+    drinkDict =
         {
-            'time': time,
-    //        'geo': {'lat': geo['lat'], 'long': geo['long']},
-            'desc': description,
-        };
+           'time': time,
+           'geo': {'lat': geo['lat'], 'long': geo['long']},
+           'desc': description
+       };
 
-
-    console.log(drinkDict);
+   localStorage.setItem('drink');
 }
+
 
 function dailyReport () {
 
@@ -46,14 +50,6 @@ function sendDailyReport () {
     //sendToServer(report);
 }
 
-function writeLocalStorage() {
-    localStorage.setItem("name", "Hello World!"); //saves to the database, key/value
-    document.write(localStorage.getItem("name")); //Hello World!
-    localStorage.removeItem("name"); //deletes the matching item from the database
-
+function test() {
+    alert("yup");
 }
-
-function setLocalStorageItem(key, value) {
-
-}
-
