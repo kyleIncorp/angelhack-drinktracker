@@ -1,19 +1,49 @@
-function addDrink (var time, var geo, var description) {
-    var drinkDict =
-        {
-            'time': time,
-            'geo': {'lat': geo.lat, 'long': geo.long},
-            'desc': description,
-        };
+var description;
 
-    return drinkDict
+function getTime() {
+    var time;
+    time = new Date().getTime();
+
+    return time;
 }
 
-function dailyReport (var day) {
+function returnGeoCoords(position) {
+    var geo;
+
+    alert(position);
+
+    geo = {'lat': position.coords.latitude, 'long': position.coords.longitude};
+
+    return geo;
+}
+
+function getGeoCoords(){
+    var geo = navigator.geolocation.getCurrentPosition(returnGeoCoords);
+
+    alert(geo);
+
+    return geo;
+}
+
+function addDrink (description) {
+    var time = getTime();
+    var geo = getGeoCoords();
+
+    //var drinkDict =
+     //   {
+     //       'time': time,
+     //       'geo': {'lat': geo.lat, 'long': geo.long},
+     //       'desc': description,
+     //   };
+
+    //return drinkDict
+}
+
+function dailyReport () {
 
 }
 
-function sendDailyReport (var day) {
+function sendDailyReport () {
     var report = dailyReport(day);
     //drinkReport must contain email address
     //sendToServer(report);
@@ -29,3 +59,4 @@ function writeLocalStorage() {
 function setLocalStorageItem(key, value) {
 
 }
+
