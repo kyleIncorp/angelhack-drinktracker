@@ -20,6 +20,16 @@ function returnGeoCoords(pos) {
     localStorage.setItem('temp_geo', JSON.stringify(geo));
 }
 
+function getLSDrinkArray(drinkingDay) {
+    var drinkArray;
+
+    var arrayString = localStorage.getItem(drinkingDay);
+
+    drinkArray = JSON.parse(arrayString);
+
+    return drinkArray;
+}
+
 function addDrink(description) {
     
     var time = getTime();
@@ -36,7 +46,16 @@ function addDrink(description) {
            'desc': description
        };
 
-   localStorage.setItem('drink');
+    var drinkArray = getLSDrinkArray(drinkingDay);
+    
+    if (!drinkArray) {
+        drinkArray = new Array();
+    }
+    
+    drinkArray.push(drinkDict);
+    var drinkArrayString = JSON.stringify(drinkArray);
+
+    localStorage.setItem(drinkingDay, drinkArrayString);
 }
 
 
@@ -48,6 +67,10 @@ function sendDailyReport () {
     var report = dailyReport(day);
     //drinkReport must contain email address
     //sendToServer(report);
+}
+
+function setEmail(email){
+    localStorage.setItem('email', email);
 }
 
 function test() {
