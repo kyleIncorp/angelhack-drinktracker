@@ -7,12 +7,12 @@ function getTime() {
     return time;
 }
 
-function returnGeoCoords(position) {
+function returnGeoCoords(pos) {
     var geo;
 
-    alert(position);
+    alert(pos.coords.latitude);
 
-    geo = {'lat': position.coords.latitude, 'long': position.coords.longitude};
+    geo = {'lat': pos.coords.latitude, 'long': pos.coords.longitude};
 
     return geo;
 }
@@ -29,14 +29,13 @@ function addDrink (description) {
     var time = getTime();
     var geo = getGeoCoords();
 
-    //var drinkDict =
-     //   {
-     //       'time': time,
-     //       'geo': {'lat': geo.lat, 'long': geo.long},
-     //       'desc': description,
-     //   };
+    var drinkDict =
+        {
+            'time': time,
+    //        'geo': {'lat': geo.lat, 'long': geo.long},
+            'desc': description,
+        };
 
-    //return drinkDict
 }
 
 function dailyReport () {
