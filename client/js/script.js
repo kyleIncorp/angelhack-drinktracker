@@ -92,7 +92,7 @@ function addDrink(description) {
     console.log("Successful drink:"+ description +" addition");
     displayDrinkMessage(drinkMessages);
 
-    $('#drink_count').val(drinkArray.length);
+    $('#drink_count').text(drinkArray.length);
 }
 
 
