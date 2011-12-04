@@ -26,7 +26,8 @@ function displayDrinkMessage(drinkMessages) {
     var rando = Math.floor(Math.random()*(drinkMessages.length-1));
     var message = drinkMessages[rando];
 
-    alert(message);
+    $('#drink_message').text(message);
+    $('<a />').attr({href: '#drink_dialog', 'data-rel': 'dialog'}).click();
 }
 
 function getTime() {
@@ -148,7 +149,7 @@ function returnEmail() {
     var email = localStorage.getItem('email');
 
     if (!email) {
-        email = 'No email stored';
+        email = 'none';
     }
 
     return email;
