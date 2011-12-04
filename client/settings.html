@@ -7,18 +7,28 @@
         
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
-        <script src="js/script.js">
+        <script src="js/script.js"></script>
 
-       $('body').live('pageinit',function(event){
-          alert('This page was just enhanced by jQuery Mobile!');
-        });
-        
+        <script type="text/javascript">
+           $('#settings_page').live('pageinit',function(event){
+                var LSEmail = returnEmail();   
+
+                if (LSEmail!='none') {
+                    $('#email_text').val(LSEmail); 
+                }
+                else {
+                    $('#email_text').val('Please enter an email now');
+                }
+
+            });
         </script>
+        
+        
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
-    <body id='settingsPage'>
-        <div data-role="page"> 
+    <body>
+        <div data-role="page"  id='settings_page'> 
             <div class="top_bar" data-role="header">
                 <h1>Settings</h1>
                 <a href="index.html" class="right-settings" data-role="button" data-icon="home" data-transition="flip">Home</a>
@@ -26,9 +36,9 @@
             <div data-role="content" data-theme="e">
                 <div data-role="fieldcontain">
                     <label for="Email">Email:</label>
-                    <input type="email" name="email" id="email" />
+                    <input type="email" name="email_text" id="email_text" />
                 </div>
-                <input type="button" value='Update' />
+                <input type="button" value='Update' onClick="setEmail(document.getElementById('email_text').value)"/>
             </div> 
             <div data-role="footer">
                 <h6>Built at AngelHack</h6>
