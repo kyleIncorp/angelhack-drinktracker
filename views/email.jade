@@ -13,4 +13,5 @@ html(lang="en")
     p Hi there! You had #{drinkCount} drinks:
     ol
       each drink in report
-        li #{drink.timeFormat}: #{drink.desc} at #{drink.geo.lat}, #{drink.geo.long}
+	//-if drink.place==null drink.place="Unknown location"
+        li #{drink.timeFormat}: #{drink.desc} at #{drink.place} (#{drink.lat}, #{drink.long}) //#{drink.place}
