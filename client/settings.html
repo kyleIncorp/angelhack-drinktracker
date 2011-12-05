@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Goon Buggy v1</title>
+        <title>GoonBuggy v1</title>
         <link rel="stylesheet" href="css/mobile.css" />
         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
         
@@ -10,20 +10,20 @@
         <script src="js/script.js"></script>
 
         <script type="text/javascript">
-           $('#settings_page').live('pageinit',function(event){
-                var LSEmail = returnEmail();   
+
+            $('#settings_page').live('pageshow',function(event, ui){
+                var LSEmail = returnEmail(); 
+
 
                 if (LSEmail!='none') {
                     $('#email_text').val(LSEmail); 
                 }
                 else {
                     $('#email_text').val('Please enter an email now');
-                    $('<a />').attr({'href': '#set_email', 'data-rel': 'dialog'}).click();
+                    //$('<a />').attr({'href': '#set_email', 'data-rel': 'dialog'}).click();
                 }
-
             });
         </script>
-        
         
 
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -48,7 +48,7 @@
 
         <div data-role="page" id="set_email">
             <div class="top_bar" data-role="header">
-                <h2>No Email</h2>
+                <h2>Email Alert</h2>
             </div>
             <div data-role="content" data-theme="e">
                 <p>Please set an email so we can harass you in the morning :)</p>

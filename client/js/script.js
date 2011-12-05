@@ -175,6 +175,9 @@ function sendDailyReport (drinkingDay) {
 
 function setEmail(email){
     localStorage.setItem('email', email);
+
+    $('#set_email p').text("Thanks! Email updated");
+    $('<a />').attr({href: '#set_email', 'data-rel': 'dialog'}).click();
 }
 
 function returnEmail() {
