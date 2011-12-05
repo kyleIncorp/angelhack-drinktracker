@@ -7,6 +7,7 @@ var express = require('express'),
     path = require('path');
     jade = require('jade');
     OAuth = require('oauth').OAuth;
+    dateFormat = require('dateformat');
 
 var factualKey = "Jrc8vygPg8kBgAaAjIcnAopBVuTWaPRlImiu8iI4";
 var factualSecret = "6EP11yubg2OzX0lMEvOQC0pnN18qraC28bDpqZpz";
@@ -21,12 +22,18 @@ app.configure(function(){
 	app.set('view options', {layout: false});
 });
 
-//Otherwise...
+//Process daily drink report
 app.post('/dailyDrinkReport', function(req, res){
-	report = JSON.parse(req.body);
-	console.log(req.body);
+	//Parse the JSON string report
+	report = JSON.parse(req.body.report_json);
+	for(drink in report){
+		report[drink].timeFormat = dateFormat(new Date(t), "dddd, h:MM TT");
+	}
+
 	console.log(report);
-	email = jade.renderFile('views/email.jade', req.body, function(err, html){
+	emailAddress = req.body.email;
+	console.log("send report to "+emailAddress);
+	email = jade.renderFile('views/email.jade', report, function(err, html){
 		console.log(html);
 	});
 });
@@ -34,9 +41,9 @@ app.post('/dailyDrinkReport', function(req, res){
 var port = process.env.PORT || 5000;
 app.listen(port);
 
-//securer.get("http://api.v3.factual.com/t/places",
-//	    null,
+//securer.get('http://api.v3.factual.com/t/places?filters={"category":"Food%20%26%20Beverage"}&geo={"$circle":{"$center":[37.779331,-122.419131],"$meters":500}}',
+//			null,
 //	    null,
 //	    function (err, data, result) {
-//		console.log(data);
-//	    });
+//				console.log("Got response: "+data);
+//   	});
