@@ -196,10 +196,10 @@ function sendToServer(report) {
 
 }
 
-function sendDailyReport (drinkingDay) {
+function sendDailyReport () {
+    var drinkingDay = getDrinkingDay();
     var report = dailyReport(drinkingDay);
-    //drinkReport must contain email address
-    //sendToServer(report);
+    sendToServer(report);
 }
 
 function setEmail(email){
