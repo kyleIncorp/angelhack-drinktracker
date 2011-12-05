@@ -98,6 +98,14 @@ function returnGeoCoords(pos) {
     localStorage.setItem('temp_geo', JSON.stringify(geo));
 }
 
+function geoCoordsArray(){
+
+    navigator.geolocation.getCurrentPosition(returnGeoCoords);
+    var geo = JSON.parse(localStorage.getItem('temp_geo'));
+
+    return geo;
+}
+
 function getLSDrinkArray(drinkingDay) {
     var drinkArray;
 
