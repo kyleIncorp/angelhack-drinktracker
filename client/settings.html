@@ -9,7 +9,14 @@
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
         <script src="js/script.js"></script>
 
-        <script type="text/javascript">
+
+        
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <div data-role="page"  id='settings_page'>
+            <script type="text/javascript">
 
             $('#settings_page').live('pageinit',function(event, ui){
                 var LSEmail = returnEmail(); 
@@ -23,13 +30,7 @@
                     //$('<a />').attr({'href': '#set_email', 'data-rel': 'dialog'}).click();
                 }
             });
-        </script>
-        
-
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-    </head>
-    <body>
-        <div data-role="page"  id='settings_page'> 
+            </script> 
             <div class="top_bar" data-role="header">
                 <h1>Settings</h1>
                 <a href="drinks.html" class="right-settings" data-role="button" data-icon="home" data-transition="flip">Home</a>

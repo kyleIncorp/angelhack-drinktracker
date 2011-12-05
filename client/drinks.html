@@ -8,25 +8,28 @@
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
         <script src="js/script.js"></script>
-        <script type="text/javascript">
-
-            $('#home_page').live('pageinit',function(event){
-                    //set drink counter to reflect current drinking day
-                    var drinkArray = getLSDrinkArray(getDrinkingDay());
-                    $('#drink_count').text(drinkArray.length);
-                    
-                    var LSEmail = returnEmail();
-
-                    if (LSEmail=='none') {
-                        $.mobile.changePage("settings.html");
-                    }
-            });
-        
-        </script>
+       
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <div data-role="page" id="home_page"> 
+        <div data-role="page" id="home_page">
+             <script type="text/javascript">
+
+            $('#home_page').live('pageinit',function(event){
+                    //set drink counter to reflect current drinking day
+                    var drinkingDay = getDrinkingDay();
+
+                    var drinkArray = getLSDrinkArray(drinkingDay);
+                    $('#drink_count').text(drinkArray.length);
+                    
+                    //var LSEmail = returnEmail();
+
+                    //if (LSEmail=='none') {
+                    //    $.mobile.changePage("settings.html");
+                    //}
+            });
+        
+            </script>
             <div class="top_bar" data-role="header">
                 <h1>Goon Buggy</h1>
                 <a href="settings.html" class="right-settings" data-role="button" data-icon="gear" data-transition="flip">Settings</a>
