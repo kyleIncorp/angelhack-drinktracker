@@ -11,7 +11,7 @@
 
         <script type="text/javascript">
 
-            $('#settings_page').live('pageshow',function(event, ui){
+            $('#settings_page').live('pageinit',function(event, ui){
                 var LSEmail = returnEmail(); 
 
 
@@ -40,8 +40,10 @@
                     <input type="email" name="email_text" id="email_text" />
                 </div>
                 <div data-role="controlgroup" data-type="horizontal">
+                    <center>
                     <input type="button" value='Update' onClick="setEmail(document.getElementById('email_text').value)"/>
                     <input type="button" value='Send Report' onClick="sendDailyReport()"/>
+                </center>
                 </div>
             </div>
             <div data-role="footer">
