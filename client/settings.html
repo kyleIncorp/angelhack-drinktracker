@@ -39,8 +39,11 @@
                     <label for="Email">Email:</label>
                     <input type="email" name="email_text" id="email_text" />
                 </div>
-                <input type="button" value='Update' onClick="setEmail(document.getElementById('email_text').value)"/>
-            </div> 
+                <div data-role="controlgroup" data-type="horizontal">
+                    <input type="button" value='Update' onClick="setEmail(document.getElementById('email_text').value)"/>
+                    <input type="button" value='Send Report' onClick="setEmail(document.getElementById('email_text').value)"/>
+                </div>
+            </div>
             <div data-role="footer">
                 <h6>Built at AngelHack</h6>
             </div> 
