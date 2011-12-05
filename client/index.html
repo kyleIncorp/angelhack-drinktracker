@@ -11,6 +11,16 @@
         <script type="text/javascript">
 
             $('#splash_page').live('pageinit',function(event){
+                    if ( localStorage.getItem('goonbuggy_inital') == null ) {
+                    setTimeout(function(){
+                            localStorage.setItem('goonbuggy_inital', 'no');
+                            $.mobile.changePage("drinks.html");
+                        }, 2000);
+                    }
+                    else
+                    {
+                        $.mobile.changePage("drinks.html");
+                    }
                     //set drink counter to reflect current drinking day
                     
             });
