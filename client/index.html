@@ -10,45 +10,22 @@
         <script src="js/script.js"></script>
         <script type="text/javascript">
 
-            $('#home_page').live('pageinit',function(event){
+            $('#splash_page').live('pageinit',function(event){
                     //set drink counter to reflect current drinking day
-                    var drinkArray = getLSDrinkArray(getDrinkingDay());
-                    $('#drink_count').text(drinkArray.length);
                     
-                    var LSEmail = returnEmail();
-
-                    if (LSEmail=='none') {
-                        $.mobile.changePage("settings.html");
-                    }
             });
         
         </script>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <div data-role="page" id="home_page"> 
+        <div data-role="page" id="splash_page"> 
             <div class="top_bar" data-role="header">
                 <h1>Goon Buggy</h1>
                 <a href="settings.html" class="right-settings" data-role="button" data-icon="gear" data-transition="flip">Settings</a>
             </div> 
-            <div data-role="content" data-theme="e">
-                <div data-role="controlgroup" data-type="horizontal">
-                    <center>
-                        <a href="#" onClick="addDrink('beer');"><img src="img/beer.jpg" height="120px"></a>
-                        <a href="#" onClick="addDrink('shots');"><img src="img/shots.jpg" height="120px"></a>
-                    </center>
-                </div>
-                <div data-role="controlgroup" data-type="horizontal">
-
-                    <h3 name="drink_count" id="drink_count" value="" style="text-align:center; font-size:1.2em; color:red; padding:0;margin-top:0px;margin-bottom:0px;" data-theme="c">0</h3>
-
-                </div>
-                 <div data-role="controlgroup" data-type="horizontal">
-                    <center>
-                        <a href="#" onClick="addDrink('spirits');"><img src="img/mixed.jpg" height="120px"></a>
-                        <a href="#" onClick="addDrink('wine');"><img src="img/wine.jpg" height="120px"></a>
-                    </center>
-                </div> 
+            <div data-role="content" data-theme="d">
+                <center><img src="img/splash.jpg"></center>
             </div> 
             <div data-role="footer">
                 <h6>Built at AngelHack</h6>
