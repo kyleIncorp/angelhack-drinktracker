@@ -34,6 +34,7 @@ app.post('/dailyDrinkReport', function(req, res){
 		t = report[drink].time;
 		report[drink].timeFormat = dateFormat(new Date(t), "dddd, h:MM TT");
 	}
+	console.log(report);
 
 	emailAddress = req.body.email;
 	email = jade.renderFile('views/email.jade', report, function(err, html){
@@ -46,7 +47,7 @@ app.post('/dailyDrinkReport', function(req, res){
  		    to : emailAddress,
         from : "no-reply@goonbuggy.com",
     		subject : "Your Drinking Report",
-   		  body: html,
+   		  html: html,
    		  authentication : "login",
 			  username : sgusername,
     		password : sgpassword },
