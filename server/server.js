@@ -8,10 +8,14 @@ var express = require('express'),
     jade = require('jade');
     OAuth = require('oauth').OAuth;
     dateFormat = require('dateformat');
+		email = require("mailer");
 
 var factualKey = "Jrc8vygPg8kBgAaAjIcnAopBVuTWaPRlImiu8iI4";
 var factualSecret = "6EP11yubg2OzX0lMEvOQC0pnN18qraC28bDpqZpz";
 var securer = new OAuth(null, null, factualKey, factualSecret,'1.0', null,'HMAC-SHA1');
+
+var sgusername = 'jeremia.kimelman';
+var sgpassword = 'angelhack';
 
 
 //Static HTML files
@@ -27,14 +31,32 @@ app.post('/dailyDrinkReport', function(req, res){
 	//Parse the JSON string report
 	report = JSON.parse(req.body.report_json);
 	for(drink in report){
+		t = report[drink].time;
 		report[drink].timeFormat = dateFormat(new Date(t), "dddd, h:MM TT");
 	}
 
-	console.log(report);
 	emailAddress = req.body.email;
-	console.log("send report to "+emailAddress);
 	email = jade.renderFile('views/email.jade', report, function(err, html){
 		console.log(html);
+
+			email.send({
+    		host : "smtp.sendgrid.net",
+    		port : "587",
+ 		    domain : "goonbuggy.com",
+ 		    to : emailAddress,
+        from : "no-reply@goonbuggy.com",
+    		subject : "Your Drinking Report",
+   		  body: html,
+   		  authentication : "login",
+			  username : sgusername,
+    		password : sgpassword },
+  		function(err, result){
+   		  if(err){
+      	console.log(err);
+   		}
+});
+
+
 	});
 });
 
