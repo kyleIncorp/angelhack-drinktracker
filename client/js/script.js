@@ -74,6 +74,22 @@ function getDrinkingDay(){
     return drinkDay;
 }
 
+function factualPlaceDatabaseRequest(lat, lon, callback) {        
+       
+
+       var factualQueryUrl = 'http://api.v3.factual.com/t/places?filters={"category":{"$bwin":"Food%20%26%20Beverage,Arts,,%20Entertainment%20%26%20Nightlife"}}&geo={"$circle":{"$center":['
+        + lat+','+lon+'],"$meters":100}}&KEY=Jrc8vygPg8kBgAaAjIcnAopBVuTWaPRlImiu8iI4';
+
+       $.ajax({ url: factualQueryUrl,
+           success: function (data) {
+               //$("#results").html(data);
+
+               var place0_name = data.response.data[0].name;
+               callback(place0_name);
+           }
+       });
+}
+
 function returnGeoCoords(pos) {
     var geo;
 
@@ -98,6 +114,18 @@ function getLSDrinkArray(drinkingDay) {
 
 function addDrink(description) {
     
+    navigator.geolocation.getCurrentPosition(returnGeoCoords);
+    var geo = JSON.parse(localStorage.getItem('temp_geo'));   
+    
+    factualPlaceDatabaseRequest(geo['lat'], geo['long'], function(name) {
+            addDrinkInternal(description, name);   
+        
+    });  
+
+}
+
+function addDrinkInternal(description, placeName) {
+    
     var time = getTime();
     var drinkingDay = getDrinkingDay();
 
@@ -109,7 +137,8 @@ function addDrink(description) {
         {
            'time': time,
            'geo': {'lat': geo['lat'], 'long': geo['long']},
-           'desc': description
+           'desc': description,
+           'place': placeName
        };
 
     var drinkArray = getLSDrinkArray(drinkingDay);
