@@ -200,6 +200,9 @@ function sendDailyReport () {
     var drinkingDay = getDrinkingDay();
     var report = dailyReport(drinkingDay);
     sendToServer(report);
+
+    $('#set_email p').text("Report sent.");
+    $('<a />').attr({href: '#set_email', 'data-rel': 'dialog'}).click();
 }
 
 function setEmail(email){
